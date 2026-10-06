@@ -14,10 +14,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button newExitButton = findViewById(R.id.exit_btn);
+
         newExitButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, StartingPage.class);
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    StartingPage.class
+            );
+
             startActivity(intent);
         });
 
+
+        Button newGuessTheCountryButton =
+                findViewById(R.id.guess_the_country_btn);
+
+        newGuessTheCountryButton.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    GuessTheCountryPage.class
+            );
+
+            startActivity(intent);
+        });
     }
 }
