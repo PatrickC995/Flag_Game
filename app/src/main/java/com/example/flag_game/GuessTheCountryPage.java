@@ -2,6 +2,7 @@ package com.example.flag_game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -59,6 +60,16 @@ public class GuessTheCountryPage extends AppCompatActivity {
                 startNewRound();
             }
 
+        });
+        Button newExitButton = findViewById(R.id.exit_guess_the_country_btn);
+
+        newExitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    GuessTheCountryPage.this,
+                    MainActivity.class
+            );
+
+            startActivity(intent);
         });
     }
 
