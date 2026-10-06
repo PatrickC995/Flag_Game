@@ -21,30 +21,6 @@ public class GuessTheCountryPage extends AppCompatActivity {
     TextView resultText;
     TextView correctAnswerText;
 
-    String[] countries = {
-            "Algeria",
-            "Australia",
-            "Belgium",
-            "Brazil",
-            "Canada",
-            "Colombia",
-            "Croatia",
-            "Denmark",
-            "Egypt",
-            "Finland",
-            "France",
-            "Germany",
-            "Greece",
-            "Portugal",
-            "Singapore",
-            "Spain",
-            "Sweden",
-            "Switzerland",
-            "Turkey",
-            "Ukraine",
-            "Zimbabwe"
-    };
-
     int currentFlagIndex;
 
     Random random = new Random();
@@ -64,7 +40,7 @@ public class GuessTheCountryPage extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
-                countries
+                FlagData.countries
         );
 
         adapter.setDropDownViewResource(
@@ -88,9 +64,9 @@ public class GuessTheCountryPage extends AppCompatActivity {
 
     private void displayRandomFlag() {
 
-        currentFlagIndex = random.nextInt(countries.length);
+        currentFlagIndex = random.nextInt(FlagData.countries.length);
 
-        String country = countries[currentFlagIndex];
+        String country = FlagData.countries[currentFlagIndex];
 
         String imageName = country.toLowerCase();
 
@@ -107,7 +83,7 @@ public class GuessTheCountryPage extends AppCompatActivity {
     private void checkAnswer() {
 
         String selectedCountry = countrySpinner.getSelectedItem().toString();
-        String correctCountry = countries[currentFlagIndex];
+        String correctCountry = FlagData.countries[currentFlagIndex];
 
         if (selectedCountry.equals(correctCountry)) {
 
@@ -134,12 +110,12 @@ public class GuessTheCountryPage extends AppCompatActivity {
         int newIndex;
 
         do {
-            newIndex = random.nextInt(countries.length);
+            newIndex = random.nextInt(FlagData.countries.length);
         } while (newIndex == currentFlagIndex);
 
         currentFlagIndex = newIndex;
 
-        String country = countries[currentFlagIndex];
+        String country = FlagData.countries[currentFlagIndex];
         String imageName = country.toLowerCase();
 
         int imageResource = getResources().getIdentifier(
