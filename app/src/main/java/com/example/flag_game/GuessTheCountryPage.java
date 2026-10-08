@@ -61,6 +61,7 @@ public class GuessTheCountryPage extends AppCompatActivity {
             }
 
         });
+
         Button newExitButton = findViewById(R.id.exit_guess_the_country_btn);
 
         newExitButton.setOnClickListener(v -> {
