@@ -36,5 +36,17 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
+
+        Button newGuessHintsButton =
+                findViewById(R.id.guess_hints_btn);
+
+        newGuessHintsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    GuessHintsPage.class
+            );
+
+            startActivity(intent);
+        });
     }
 }
