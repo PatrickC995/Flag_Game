@@ -2,6 +2,7 @@ package com.example.flag_game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.graphics.Color;
 import android.widget.Button;
@@ -65,6 +66,17 @@ public class GuessHintsPage extends AppCompatActivity {
         });
 
         startNewRound();
+
+        Button newExitButton = findViewById(R.id.guess_hints_exit_btn);
+
+        newExitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    GuessHintsPage.this,
+                    MainActivity.class
+            );
+
+            startActivity(intent);
+        });
     }
 
     private void startNewRound() {
