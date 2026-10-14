@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Flag_Game</string>
+    <string name="guess_flag_title">Guess the Flag</string>
+    <string name="guess_flag_instructions">Tap the flag belonging to the country below. You have one attempt per round.</string>
+
+    <string name="guess_flag_option">Flag option %1$d</string>
+    <string name="guess_flag_option_1">Flag option 1</string>
+    <string name="guess_flag_option_2">Flag option 2</string>
+    <string name="guess_flag_option_3">Flag option 3</string>
+
+    <string name="guess_flag_correct">CORRECT!</string>
+    <string name="guess_flag_wrong">WRONG!</string>
+    <string name="guess_flag_next">Next</string>
+    <string name="guess_flag_exit">Exit</string>
 </resources>

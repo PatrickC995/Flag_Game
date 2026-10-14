@@ -48,5 +48,17 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
+
+        Button newGuessTheFlagButton =
+                findViewById(R.id.guess_the_flag_btn);
+
+        newGuessTheFlagButton.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    GuessTheFlagPage.class
+            );
+
+            startActivity(intent);
+        });
     }
 }
