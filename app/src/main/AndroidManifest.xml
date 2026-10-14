@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Flag_Game"
         tools:targetApi="31">
         <activity
+            android:name=".GuessHintsPage"
+            android:exported="false" />
+        <activity
             android:name=".GuessTheCountryPage"
             android:exported="false" />
         <activity
