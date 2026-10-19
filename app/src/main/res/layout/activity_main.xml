@@ -1,72 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/game_background"
+    android:fillViewport="true"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/main_menu_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Country Games"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="50dp" />
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <Button
-        android:id="@+id/guess_the_country_btn"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Guess The Country"
-        app:layout_constraintTop_toBottomOf="@id/main_menu_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="100dp" />
+        <TextView
+            android:id="@+id/main_menu_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Country Games"
+            android:textColor="@color/game_text"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:accessibilityHeading="true" />
 
-    <Button
-        android:id="@+id/guess_hints_btn"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Guess Hints"
-        app:layout_constraintTop_toBottomOf="@id/guess_the_country_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Choose how you want to play."
+            android:textColor="@color/game_text_secondary"
+            android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/guess_the_flag_btn"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Guess The Flag"
-        app:layout_constraintTop_toBottomOf="@id/guess_hints_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp" />
+        <!-- Guess the Country -->
 
-    <Button
-        android:id="@+id/advanced_level_btn"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Advanced Level"
-        app:layout_constraintTop_toBottomOf="@id/guess_the_flag_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:background="@drawable/game_card_background"
+            android:padding="20dp">
 
-    <Button
-        android:id="@+id/exit_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Exit"
-        app:layout_constraintTop_toBottomOf="@id/advanced_level_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recognise the flag"
+                android:textColor="@color/game_text"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:accessibilityHeading="true" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Look at a flag and select the country it belongs to."
+                android:textColor="@color/game_text_secondary"
+                android:textSize="16sp"
+                android:lineSpacingExtra="3dp" />
+
+            <Button
+                android:id="@+id/guess_the_country_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:minHeight="56dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="Guess the Country"
+                android:textAllCaps="false"
+                android:textColor="@color/game_surface"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/game_primary"
+                app:backgroundTint="@color/game_primary" />
+
+        </LinearLayout>
+
+        <!-- Guess Hints -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/game_card_background"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="One letter at a time"
+                android:textColor="@color/game_text"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:accessibilityHeading="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Reveal the hidden country name by guessing its letters."
+                android:textColor="@color/game_text_secondary"
+                android:textSize="16sp"
+                android:lineSpacingExtra="3dp" />
+
+            <Button
+                android:id="@+id/guess_hints_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:minHeight="56dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="Guess Hints"
+                android:textAllCaps="false"
+                android:textColor="@color/game_surface"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/game_primary"
+                app:backgroundTint="@color/game_primary" />
+
+        </LinearLayout>
+
+        <!-- Guess the Flag -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/game_card_background"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pick the matching flag"
+                android:textColor="@color/game_text"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:accessibilityHeading="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Read the country name, then tap its flag. You get one choice per round."
+                android:textColor="@color/game_text_secondary"
+                android:textSize="16sp"
+                android:lineSpacingExtra="3dp" />
+
+            <Button
+                android:id="@+id/guess_the_flag_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:minHeight="56dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="Guess the Flag"
+                android:textAllCaps="false"
+                android:textColor="@color/game_surface"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/game_primary"
+                app:backgroundTint="@color/game_primary" />
+
+        </LinearLayout>
+
+        <!-- Advanced Level -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/game_card_background"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Take on three flags"
+                android:textColor="@color/game_text"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:accessibilityHeading="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Type all three country names before you use up three unsuccessful submissions."
+                android:textColor="@color/game_text_secondary"
+                android:textSize="16sp"
+                android:lineSpacingExtra="3dp" />
+
+            <Button
+                android:id="@+id/advanced_level_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:minHeight="56dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="Advanced Level"
+                android:textAllCaps="false"
+                android:textColor="@color/game_surface"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/game_primary"
+                app:backgroundTint="@color/game_primary" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/exit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:minHeight="48dp"
+            android:text="Exit"
+            android:textAllCaps="false"
+            android:textColor="@color/game_text"
+            android:textSize="16sp"
+            android:backgroundTint="@color/game_surface"
+            app:backgroundTint="@color/game_surface" />
+
+    </LinearLayout>
+
+</ScrollView>
