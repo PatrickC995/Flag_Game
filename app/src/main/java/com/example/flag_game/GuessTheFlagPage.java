@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,8 @@ import java.util.Random;
 
 public class GuessTheFlagPage extends AppCompatActivity {
 
+    private TextView scoreText;
+    private final RoundScore roundScore = new RoundScore(1);
     private ImageView[] flagImages;
     private TextView countryNameText;
     private TextView resultText;
@@ -32,6 +35,9 @@ public class GuessTheFlagPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_the_flag_page);
+
+        scoreText = findViewById(R.id.round_score_text);
+        updateScoreDisplay();
 
         countryNameText = findViewById(R.id.guess_flag_country_name);
         resultText = findViewById(R.id.guess_flag_result);
@@ -74,7 +80,19 @@ public class GuessTheFlagPage extends AppCompatActivity {
         }
     }
 
+    private void updateScoreDisplay() {
+        scoreText.setText("Score: " + roundScore.getScore());
+    }
+
+    private void awardCountryPoint(int countryIndex) {
+        roundScore.awardPoint(countryIndex);
+        updateScoreDisplay();
+    }
+
     private void startNewRound() {
+
+        roundScore.reset();
+        updateScoreDisplay();
 
         // Shuffle the country indices and take the first three.
         // This guarantees three different flags within each round.
@@ -166,6 +184,7 @@ public class GuessTheFlagPage extends AppCompatActivity {
                 selectedFlagPosition == correctFlagPosition;
 
         if (correct) {
+            awardCountryPoint(0);
             resultText.setText(R.string.guess_flag_correct);
             resultText.setTextColor(Color.GREEN);
         } else {

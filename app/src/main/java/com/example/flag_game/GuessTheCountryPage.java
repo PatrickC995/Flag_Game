@@ -11,11 +11,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.graphics.Color;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.Random;
 
 public class GuessTheCountryPage extends AppCompatActivity {
 
+    private TextView scoreText;
+    private final RoundScore roundScore = new RoundScore(1);
     ImageView flagImage;
     Spinner countrySpinner;
     Button submitButton;
@@ -31,6 +34,9 @@ public class GuessTheCountryPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_guess_the_country_page);
+
+        scoreText = findViewById(R.id.round_score_text);
+        updateScoreDisplay();
 
         flagImage = findViewById(R.id.guess_the_country_image_view);
         countrySpinner = findViewById(R.id.guess_the_country_spinner);
@@ -74,6 +80,15 @@ public class GuessTheCountryPage extends AppCompatActivity {
         });
     }
 
+    private void updateScoreDisplay() {
+        scoreText.setText("Score: " + roundScore.getScore());
+    }
+
+    private void awardCountryPoint(int countryIndex) {
+        roundScore.awardPoint(countryIndex);
+        updateScoreDisplay();
+    }
+
     private void displayRandomFlag() {
 
         currentFlagIndex = random.nextInt(FlagData.countries.length);
@@ -99,6 +114,8 @@ public class GuessTheCountryPage extends AppCompatActivity {
 
         if (selectedCountry.equals(correctCountry)) {
 
+            awardCountryPoint(0);
+
             resultText.setText("CORRECT!");
             resultText.setTextColor(Color.GREEN);
 
@@ -118,6 +135,9 @@ public class GuessTheCountryPage extends AppCompatActivity {
     }
 
     private void startNewRound() {
+
+        roundScore.reset();
+        updateScoreDisplay();
 
         int newIndex;
 

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TextView;
 
 import java.util.HashSet;
 import java.util.Locale;
@@ -19,6 +20,8 @@ import android.view.View;
 
 public class GuessHintsPage extends AppCompatActivity {
 
+    private TextView scoreText;
+    private final RoundScore roundScore = new RoundScore(1);
     private ImageView flagImage;
     private EditText letterInput;
     private Button submitButton;
@@ -43,6 +46,9 @@ public class GuessHintsPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_hints_page);
+
+        scoreText = findViewById(R.id.round_score_text);
+        updateScoreDisplay();
 
         flagImage = findViewById(R.id.guess_hint_flag_image_view);
         letterInput = findViewById(R.id.guess_hint_letter_input);
@@ -79,7 +85,19 @@ public class GuessHintsPage extends AppCompatActivity {
         });
     }
 
+    private void updateScoreDisplay() {
+        scoreText.setText("Score: " + roundScore.getScore());
+    }
+
+    private void awardCountryPoint(int countryIndex) {
+        roundScore.awardPoint(countryIndex);
+        updateScoreDisplay();
+    }
+
     private void startNewRound() {
+
+        roundScore.reset();
+        updateScoreDisplay();
 
         // Avoid displaying the same flag in consecutive rounds.
         int nextIndex;
@@ -201,6 +219,7 @@ public class GuessHintsPage extends AppCompatActivity {
         submitButton.setText("Next");
 
         if (won) {
+            awardCountryPoint(0);
             resultText.setText("CORRECT!");
             resultText.setTextColor(Color.GREEN);
         } else {

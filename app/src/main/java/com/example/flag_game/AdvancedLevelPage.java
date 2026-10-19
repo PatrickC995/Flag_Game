@@ -19,7 +19,8 @@ import java.util.Locale;
 public class AdvancedLevelPage extends AppCompatActivity {
 
     private static final int MAX_ATTEMPTS = 3;
-
+    private TextView scoreText;
+    private final RoundScore roundScore = new RoundScore(3);
     private final ImageView[] flagImages = new ImageView[3];
     private final EditText[] answerInputs = new EditText[3];
     private final TextView[] correctAnswerTexts = new TextView[3];
@@ -40,6 +41,9 @@ public class AdvancedLevelPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_level_page);
+
+        scoreText = findViewById(R.id.round_score_text);
+        updateScoreDisplay();
 
         flagImages[0] = findViewById(R.id.advanced_flag_1);
         flagImages[1] = findViewById(R.id.advanced_flag_2);
@@ -84,6 +88,9 @@ public class AdvancedLevelPage extends AppCompatActivity {
     }
 
     private void startNewRound() {
+
+        roundScore.reset();
+        updateScoreDisplay();
         // Remove duplicate country names before selecting three flags.
         ArrayList<String> countries = new ArrayList<>(
                 new LinkedHashSet<>(
@@ -124,6 +131,15 @@ public class AdvancedLevelPage extends AppCompatActivity {
         }
 
         updateAttemptsText();
+    }
+
+    private void updateScoreDisplay() {
+        scoreText.setText("Score: " + roundScore.getScore());
+    }
+
+    private void awardCountryPoint(int countryIndex) {
+        roundScore.awardPoint(countryIndex);
+        updateScoreDisplay();
     }
 
     private void showFlag(int index) {
@@ -178,6 +194,7 @@ public class AdvancedLevelPage extends AppCompatActivity {
 
             } else if (enteredAnswer.equals(expectedAnswer)) {
                 correctAnswers[i] = true;
+                awardCountryPoint(i);
 
                 answerInputs[i].setTextColor(
                         Color.rgb(0, 128, 0)
@@ -268,6 +285,10 @@ public class AdvancedLevelPage extends AppCompatActivity {
     }
 
     private void restoreRound(Bundle state) {
+
+        roundScore.reset();
+        updateScoreDisplay();
+
         String[] countries = state.getStringArray("countries");
         boolean[] correct = state.getBooleanArray("correct");
         String[] entered = state.getStringArray("enteredAnswers");
@@ -297,6 +318,7 @@ public class AdvancedLevelPage extends AppCompatActivity {
             );
 
             if (correctAnswers[i]) {
+                awardCountryPoint(i);
                 answerInputs[i].setTextColor(
                         Color.rgb(0, 128, 0)
                 );
