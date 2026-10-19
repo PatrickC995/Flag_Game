@@ -60,5 +60,14 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
+
+        findViewById(R.id.advanced_level_btn).setOnClickListener(view -> {
+            Intent intent = new Intent(
+                    this,
+                    AdvancedLevelPage.class
+            );
+
+            startActivity(intent);
+        });
     }
 }

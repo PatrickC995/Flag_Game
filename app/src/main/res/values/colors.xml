@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Shared game colours -->
+    <color name="game_background">#E8D8C0</color>
+    <color name="game_surface">#FFF8EE</color>
+    <color name="game_primary">#503B2B</color>
+    <color name="game_text">#30251D</color>
+    <color name="game_text_secondary">#655545</color>
+    <color name="game_border">#B19A7E</color>
+
+    <color name="game_correct">#176B35</color>
+    <color name="game_wrong">#B3261E</color>
+    <color name="game_answer_blue">#174EA6</color>
 </resources>

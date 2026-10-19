@@ -1,56 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/game_background"
+    android:fillViewport="true"
+    android:clipToPadding="false"
     tools:context=".StartingPage">
 
-    <TextView
-        android:id="@+id/flag_game_title_txt"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Country Flag Game"
-        android:textSize="24sp"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="24dp">
 
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginTop="77dp" />
+        <!-- Main welcome card -->
 
-    <Button
-        android:id="@+id/new_flag_game_btn"
-        android:layout_width="175dp"
-        android:layout_height="50dp"
-        android:text="New Country Flag"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@drawable/game_card_background"
+            android:padding="24dp">
 
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginTop="285dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="EXPLORE THE WORLD"
+                android:textColor="@color/game_text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12" />
 
-    <Button
-        android:id="@+id/about_btn"
-        android:layout_width="175dp"
-        android:layout_height="50dp"
-        android:text="About"
+            <TextView
+                android:id="@+id/flag_game_title_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Country Flag Game"
+                android:textColor="@color/game_text"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:accessibilityHeading="true" />
 
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginTop="360dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="How well do you know your flags? Choose a game mode and put your knowledge to the test."
+                android:textColor="@color/game_text_secondary"
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp" />
 
-    <TextView
-        android:id="@+id/about_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="476dp"
+            <Button
+                android:id="@+id/new_flag_game_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:minHeight="56dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="New Game"
+                android:textAllCaps="false"
+                android:textColor="@color/game_surface"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/game_primary"
+                app:backgroundTint="@color/game_primary" />
 
-        android:text="TextView"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/about_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="48dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="About"
+                android:textAllCaps="false"
+                android:textColor="@color/game_text"
+                android:textSize="16sp"
+                android:backgroundTint="@color/game_background"
+                app:backgroundTint="@color/game_background" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <!-- Revealed by the existing About button code -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/about_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/game_card_background"
+                android:padding="20dp"
+                android:textColor="@color/game_text"
+                android:textSize="16sp"
+                android:lineSpacingExtra="5dp"
+                android:visibility="gone"
+                tools:text="Your existing declaration will appear here when About is selected."
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
