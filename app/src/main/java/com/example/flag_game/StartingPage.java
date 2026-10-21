@@ -19,7 +19,7 @@ public class StartingPage extends AppCompatActivity {
         aboutTxt.setVisibility(TextView.GONE);
         aboutBtn.setOnClickListener(v -> {
             if (aboutTxt.getVisibility() == TextView.GONE) {
-                aboutTxt.setText("“I confirm that I understand what plagiarism is and have" +
+                aboutTxt.setText("“B00930970 Patrick Campbell, I confirm that I understand what plagiarism is and have" +
                         "read the University’s policy on plagiarism and understand the definition of plagiarism." +
                         "The work that I have submitted is entirely my own. Any work from" +
                         "other authors is duly referenced and acknowledged. I understand that I may face" +
