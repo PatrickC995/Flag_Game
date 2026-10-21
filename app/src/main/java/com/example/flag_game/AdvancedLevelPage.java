@@ -87,6 +87,7 @@ public class AdvancedLevelPage extends AppCompatActivity {
         }
     }
 
+    // AI was used for syntax guidance and debugging of the startNewRound method
     private void startNewRound() {
 
         roundScore.reset();
@@ -257,6 +258,7 @@ public class AdvancedLevelPage extends AppCompatActivity {
         }
     }
 
+    // AI was used for syntax guidance of the onSaveInstanceState method
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putStringArray("countries", roundCountries);
@@ -276,6 +278,7 @@ public class AdvancedLevelPage extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
+    // AI was used for syntax guidance and debugging of the restoreRound method
     private void restoreRound(Bundle state) {
 
         roundScore.reset();

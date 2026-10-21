@@ -11,3 +11,5 @@
         android:color="@color/game_border" />
 
 </shape>
+
+    <!-- AI was used to help with the creation of the game card background -->

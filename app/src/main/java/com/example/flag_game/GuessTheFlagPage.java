@@ -192,6 +192,7 @@ public class GuessTheFlagPage extends AppCompatActivity {
         nextButton.setVisibility(View.VISIBLE);
     }
 
+    // AI was used for syntax guidance of the onSaveInstanceState method
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
