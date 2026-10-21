@@ -104,8 +104,7 @@ public class GuessHintsPage extends AppCompatActivity {
 
         do {
             nextIndex = random.nextInt(FlagData.countries.length);
-        } while (FlagData.countries.length > 1
-                && nextIndex == currentFlagIndex);
+        } while (nextIndex == currentFlagIndex);
 
         currentFlagIndex = nextIndex;
 
