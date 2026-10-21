@@ -36,7 +36,6 @@
             android:textColor="@color/game_text_secondary"
             android:textSize="16sp" />
 
-        <!-- Guess the Country -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +81,6 @@
 
         </LinearLayout>
 
-        <!-- Guess Hints -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -128,7 +126,6 @@
 
         </LinearLayout>
 
-        <!-- Guess the Flag -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -174,7 +171,6 @@
 
         </LinearLayout>
 
-        <!-- Advanced Level -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -236,3 +232,5 @@
     </LinearLayout>
 
 </ScrollView>
+
+    <!-- The Use of AI was used to help implement my projects Design decision -->
