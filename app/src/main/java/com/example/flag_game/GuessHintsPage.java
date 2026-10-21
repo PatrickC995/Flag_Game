@@ -99,7 +99,6 @@ public class GuessHintsPage extends AppCompatActivity {
         roundScore.reset();
         updateScoreDisplay();
 
-        // Avoid displaying the same flag in consecutive rounds.
         int nextIndex;
 
         do {
@@ -111,7 +110,6 @@ public class GuessHintsPage extends AppCompatActivity {
         currentCountry = FlagData.countries[currentFlagIndex]
                 .toUpperCase(Locale.ROOT);
 
-        // Keep the drawable naming convention from your original code.
         String imageName = FlagData.countries[currentFlagIndex]
                 .toLowerCase(Locale.ROOT);
 
@@ -123,7 +121,6 @@ public class GuessHintsPage extends AppCompatActivity {
 
         flagImage.setImageResource(imageResource);
 
-        // Hide letters, but keep spaces and punctuation visible.
         hiddenName = new char[currentCountry.length()];
 
         for (int i = 0; i < currentCountry.length(); i++) {
@@ -155,7 +152,6 @@ public class GuessHintsPage extends AppCompatActivity {
 
         String input = letterInput.getText().toString().trim();
 
-        // Validate before processing the guess.
         if (!input.matches("[a-zA-Z]")) {
             letterInput.setError("Enter exactly one letter from A to Z");
             return;
@@ -163,7 +159,6 @@ public class GuessHintsPage extends AppCompatActivity {
 
         char guessedLetter = input.toUpperCase(Locale.ROOT).charAt(0);
 
-        // Repeated letters do not use another attempt.
         if (guessedLetters.contains(guessedLetter)) {
             letterInput.setError("You have already guessed this letter");
             return;
@@ -176,7 +171,6 @@ public class GuessHintsPage extends AppCompatActivity {
 
         boolean letterFound = false;
 
-        // Reveal every occurrence of the guessed letter.
         for (int i = 0; i < currentCountry.length(); i++) {
             if (currentCountry.charAt(i) == guessedLetter) {
                 hiddenName[i] = guessedLetter;

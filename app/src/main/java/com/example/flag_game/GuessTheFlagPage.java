@@ -49,7 +49,6 @@ public class GuessTheFlagPage extends AppCompatActivity {
                 findViewById(R.id.guess_flag_image_3)
         };
 
-        // Clicking a flag immediately submits the answer.
         for (int i = 0; i < flagImages.length; i++) {
             final int position = i;
 
@@ -63,7 +62,6 @@ public class GuessTheFlagPage extends AppCompatActivity {
         Button exitButton = findViewById(R.id.guess_flag_exit_button);
         exitButton.setOnClickListener(view -> finish());
 
-        // Restore the round after screen rotation.
         if (savedInstanceState != null) {
             countryIndices =
                     savedInstanceState.getIntArray("countryIndices");
@@ -94,8 +92,6 @@ public class GuessTheFlagPage extends AppCompatActivity {
         roundScore.reset();
         updateScoreDisplay();
 
-        // Shuffle the country indices and take the first three.
-        // This guarantees three different flags within each round.
         List<Integer> availableIndices = new ArrayList<>();
 
         for (int i = 0; i < FlagData.countries.length; i++) {
@@ -110,10 +106,8 @@ public class GuessTheFlagPage extends AppCompatActivity {
                 availableIndices.get(2)
         };
 
-        // Choose one of the three flags as the correct answer.
         correctFlagPosition = random.nextInt(flagImages.length);
 
-        // -1 means the user has not answered yet.
         selectedFlagPosition = -1;
 
         displayRound();
@@ -140,13 +134,10 @@ public class GuessTheFlagPage extends AppCompatActivity {
 
             flagImages[i].setImageResource(imageResource);
 
-            // Remove the previous round's highlight.
             flagImages[i].setBackgroundColor(Color.TRANSPARENT);
 
-            // Enable flags only when the round has not been answered.
             flagImages[i].setEnabled(selectedFlagPosition == -1);
 
-            // Avoid revealing the answer through accessibility labels.
             flagImages[i].setContentDescription(
                     getString(R.string.guess_flag_option, i + 1)
             );
@@ -155,7 +146,6 @@ public class GuessTheFlagPage extends AppCompatActivity {
         resultText.setText("");
         nextButton.setVisibility(View.GONE);
 
-        // Restore feedback if the user already answered before rotating.
         if (selectedFlagPosition != -1) {
             displayResult();
         }
@@ -163,14 +153,12 @@ public class GuessTheFlagPage extends AppCompatActivity {
 
     private void checkAnswer(int position) {
 
-        // Only one answer is permitted per round.
         if (selectedFlagPosition != -1) {
             return;
         }
 
         selectedFlagPosition = position;
 
-        // Disable all three flags immediately.
         for (ImageView flagImage : flagImages) {
             flagImage.setEnabled(false);
         }
@@ -192,11 +180,9 @@ public class GuessTheFlagPage extends AppCompatActivity {
             resultText.setTextColor(Color.RED);
         }
 
-        // Highlight the correct flag whether the selection was right or wrong.
         flagImages[correctFlagPosition]
                 .setBackgroundColor(Color.BLUE);
 
-        // Country names can be revealed after the answer is submitted.
         for (int i = 0; i < flagImages.length; i++) {
             flagImages[i].setContentDescription(
                     FlagData.countries[countryIndices[i]]

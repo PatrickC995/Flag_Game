@@ -91,7 +91,6 @@ public class AdvancedLevelPage extends AppCompatActivity {
 
         roundScore.reset();
         updateScoreDisplay();
-        // Remove duplicate country names before selecting three flags.
         ArrayList<String> countries = new ArrayList<>(
                 new LinkedHashSet<>(
                         Arrays.asList(FlagData.countries)
@@ -143,7 +142,6 @@ public class AdvancedLevelPage extends AppCompatActivity {
     }
 
     private void showFlag(int index) {
-        // Example: "United Kingdom" becomes "united_kingdom".
         String imageName = roundCountries[index]
                 .toLowerCase(Locale.ROOT)
                 .replace(" ", "_");
@@ -163,7 +161,6 @@ public class AdvancedLevelPage extends AppCompatActivity {
 
         flagImages[index].setImageResource(imageResource);
 
-        // Do not expose the answer in the image description.
         flagImages[index].setContentDescription(
                 "Flag " + (index + 1)
         );
@@ -174,7 +171,6 @@ public class AdvancedLevelPage extends AppCompatActivity {
 
         for (int i = 0; i < 3; i++) {
 
-            // Previously correct answers remain locked.
             if (correctAnswers[i]) {
                 continue;
             }
@@ -213,8 +209,6 @@ public class AdvancedLevelPage extends AppCompatActivity {
             return;
         }
 
-        // Count once for the whole submission,
-        // regardless of how many answers are incorrect.
         unsuccessfulSubmissions++;
         updateAttemptsText();
 
@@ -249,7 +243,6 @@ public class AdvancedLevelPage extends AppCompatActivity {
         );
 
         for (int i = 0; i < 3; i++) {
-            // No further editing once the round has ended.
             answerInputs[i].setEnabled(false);
             answerInputs[i].setError(null);
 
@@ -264,7 +257,6 @@ public class AdvancedLevelPage extends AppCompatActivity {
         }
     }
 
-    // Preserve the round if the screen rotates.
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putStringArray("countries", roundCountries);

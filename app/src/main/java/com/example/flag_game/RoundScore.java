@@ -20,7 +20,6 @@ public class RoundScore {
             throw new IllegalArgumentException("Invalid country index.");
         }
 
-        // This country has already earned its point.
         if (awarded[countryIndex]) {
             return false;
         }
